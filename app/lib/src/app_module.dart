@@ -1,13 +1,17 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:listinha/src/configuration/configuration_page.dart';
+import 'package:listinha/src/shared/services/realm/realm_config.dart';
 import 'package:listinha/src/shared/stores/app_store.dart';
+import 'package:realm/realm.dart';
 
+import 'configuration/services/configuration_service.dart';
 import 'home/home_module.dart';
 
 class AppModule extends Module {
   @override
-  // TODO: implement binds
   List<Bind> get binds => [
+        Bind.instance<Realm>(Realm(config)),
+        AutoBind.factory<ConfigurationService>(ConfigurationServiceImpl.new),
         AutoBind.singleton(AppStore.new),
       ];
 
