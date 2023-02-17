@@ -21,50 +21,52 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
       appBar: AppBar(
         title: const Text('LISTINHA'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Configurações',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Tema',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 10),
-            RadioListTile<ThemeMode>(
-              value: ThemeMode.system,
-              groupValue: appStore.themeMode.value,
-              title: const Text('Sistema'),
-              onChanged: appStore.changeThemeMode,
-            ),
-            RadioListTile<ThemeMode>(
-              value: ThemeMode.light,
-              groupValue: appStore.themeMode.value,
-              title: const Text('Claro'),
-              onChanged: appStore.changeThemeMode,
-            ),
-            RadioListTile<ThemeMode>(
-              value: ThemeMode.dark,
-              groupValue: appStore.themeMode.value,
-              title: const Text('Escuro'),
-              onChanged: appStore.changeThemeMode,
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Controle de dados',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 20),
-            OutlinedButton(
-              onPressed: () {},
-              child: const Text('Apagar cache e reiniciar o app'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Configurações',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Tema',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 10),
+              RadioListTile<ThemeMode>(
+                value: ThemeMode.system,
+                groupValue: appStore.themeMode.value,
+                title: const Text('Sistema'),
+                onChanged: appStore.changeThemeMode,
+              ),
+              RadioListTile<ThemeMode>(
+                value: ThemeMode.light,
+                groupValue: appStore.themeMode.value,
+                title: const Text('Claro'),
+                onChanged: appStore.changeThemeMode,
+              ),
+              RadioListTile<ThemeMode>(
+                value: ThemeMode.dark,
+                groupValue: appStore.themeMode.value,
+                title: const Text('Escuro'),
+                onChanged: appStore.changeThemeMode,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Controle de dados',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 20),
+              OutlinedButton(
+                onPressed: () {},
+                child: const Text('Apagar cache e reiniciar o app'),
+              ),
+            ],
+          ),
         ),
       ),
     );
