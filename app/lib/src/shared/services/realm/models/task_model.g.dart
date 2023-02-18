@@ -32,11 +32,9 @@ class Task extends _Task with RealmEntity, RealmObjectBase, RealmObject {
   set id(Uuid value) => RealmObjectBase.set(this, 'id', value);
 
   @override
-  String get description =>
-      RealmObjectBase.get<String>(this, 'description') as String;
+  String get description => RealmObjectBase.get<String>(this, 'description') as String;
   @override
-  set description(String value) =>
-      RealmObjectBase.set(this, 'description', value);
+  set description(String value) => RealmObjectBase.set(this, 'description', value);
 
   @override
   bool get complete => RealmObjectBase.get<bool>(this, 'complete') as bool;
@@ -44,8 +42,7 @@ class Task extends _Task with RealmEntity, RealmObjectBase, RealmObject {
   set complete(bool value) => RealmObjectBase.set(this, 'complete', value);
 
   @override
-  Stream<RealmObjectChanges<Task>> get changes =>
-      RealmObjectBase.getChanges<Task>(this);
+  Stream<RealmObjectChanges<Task>> get changes => RealmObjectBase.getChanges<Task>(this);
 
   @override
   Task freeze() => RealmObjectBase.freezeObject<Task>(this);
@@ -62,15 +59,14 @@ class Task extends _Task with RealmEntity, RealmObjectBase, RealmObject {
   }
 }
 
-class TaskBoard extends _TaskBoard
-    with RealmEntity, RealmObjectBase, RealmObject {
+class TaskBoard extends _TaskBoard with RealmEntity, RealmObjectBase, RealmObject {
   static var _defaultsSet = false;
 
   TaskBoard(
     Uuid id,
     String title, {
     bool enable = true,
-    Iterable<Task> task = const [],
+    Iterable<Task> tasks = const [],
   }) {
     if (!_defaultsSet) {
       _defaultsSet = RealmObjectBase.setDefaults<TaskBoard>({
@@ -80,7 +76,7 @@ class TaskBoard extends _TaskBoard
     RealmObjectBase.set(this, 'id', id);
     RealmObjectBase.set(this, 'title', title);
     RealmObjectBase.set(this, 'enable', enable);
-    RealmObjectBase.set<RealmList<Task>>(this, 'task', RealmList<Task>(task));
+    RealmObjectBase.set<RealmList<Task>>(this, 'tasks', RealmList<Task>(tasks));
   }
 
   TaskBoard._();
@@ -96,10 +92,9 @@ class TaskBoard extends _TaskBoard
   set title(String value) => RealmObjectBase.set(this, 'title', value);
 
   @override
-  RealmList<Task> get task =>
-      RealmObjectBase.get<Task>(this, 'task') as RealmList<Task>;
+  RealmList<Task> get tasks => RealmObjectBase.get<Task>(this, 'tasks') as RealmList<Task>;
   @override
-  set task(covariant RealmList<Task> value) => throw RealmUnsupportedSetError();
+  set tasks(covariant RealmList<Task> value) => throw RealmUnsupportedSetError();
 
   @override
   bool get enable => RealmObjectBase.get<bool>(this, 'enable') as bool;
@@ -107,8 +102,7 @@ class TaskBoard extends _TaskBoard
   set enable(bool value) => RealmObjectBase.set(this, 'enable', value);
 
   @override
-  Stream<RealmObjectChanges<TaskBoard>> get changes =>
-      RealmObjectBase.getChanges<TaskBoard>(this);
+  Stream<RealmObjectChanges<TaskBoard>> get changes => RealmObjectBase.getChanges<TaskBoard>(this);
 
   @override
   TaskBoard freeze() => RealmObjectBase.freezeObject<TaskBoard>(this);
@@ -120,8 +114,7 @@ class TaskBoard extends _TaskBoard
     return const SchemaObject(ObjectType.realmObject, TaskBoard, 'TaskBoard', [
       SchemaProperty('id', RealmPropertyType.uuid, primaryKey: true),
       SchemaProperty('title', RealmPropertyType.string),
-      SchemaProperty('task', RealmPropertyType.object,
-          linkTarget: 'Task', collectionType: RealmCollectionType.list),
+      SchemaProperty('tasks', RealmPropertyType.object, linkTarget: 'Task', collectionType: RealmCollectionType.list),
       SchemaProperty('enable', RealmPropertyType.bool),
     ]);
   }
